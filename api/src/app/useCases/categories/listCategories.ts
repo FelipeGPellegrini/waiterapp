@@ -1,5 +1,9 @@
 import { Response, Request } from 'express';
 
-export function listCategories(req: Request, res: Response) {
-  return res.send('Ok!');
+import { Category } from '../../models/Category';
+
+export async function listCategories(req: Request, res: Response) {
+  const categories = await Category.find();
+
+  res.json(categories);
 }
